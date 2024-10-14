@@ -70,4 +70,4 @@ Chaned parameters:
 
 Track widths are found online, see comments in `generate_boundaries.py`
 
-To generate trajectories for different tracks, change the track file in `Params/config.json`. Switch between the two tracks labelled `full`.
+To generate trajectories for different tracks, change the track file in `Params/config.json`. Switch between the two tracks labelled `full`. Additionally, for the Monza track, the `R_in = R_out = 5`, and for the Kentucky track, `R_in = R_out = 8` to account for track width differences.
