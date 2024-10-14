@@ -36,20 +36,16 @@ def main():
         X_center_no_dup.append(x)
         Y_center_no_dup.append(y)
     
-    scale = 3 / (np.max(X_center) - np.min(X_center))   # scale the track to fit the 1:43 RC car parameters, TEMP FIX
-    scale = 1 / 43   # set to 1 for the real scale, doesn't work well with the current MPCC setup
-    X_center_no_dup = np.array(X_center_no_dup) * scale
-    Y_center_no_dup = np.array(Y_center_no_dup) * scale
+    X_center_no_dup = np.array(X_center_no_dup)
+    Y_center_no_dup = np.array(Y_center_no_dup)
 
     dx = np.diff(X_center_no_dup)[:-1]
     dy = np.diff(Y_center_no_dup)[:-1]
     normal = np.array([dy, -dx]) / np.sqrt(dx**2 + dy**2)
-    outer_track = np.array([X_center_no_dup[:-2], Y_center_no_dup[:-2]]) + TRACK_WIDTH / 2 * normal * scale
-    inner_track = np.array([X_center_no_dup[:-2], Y_center_no_dup[:-2]]) - TRACK_WIDTH / 2 * normal * scale
+    outer_track = np.array([X_center_no_dup[:-2], Y_center_no_dup[:-2]]) + TRACK_WIDTH / 2 * normal
+    inner_track = np.array([X_center_no_dup[:-2], Y_center_no_dup[:-2]]) - TRACK_WIDTH / 2 * normal
     outer_track = np.hstack((outer_track, outer_track[:, [0]]))
     inner_track = np.hstack((inner_track, inner_track[:, [0]]))
-
-    print(f"Track width: {TRACK_WIDTH * scale}m")
 
     plot = True
     if plot:

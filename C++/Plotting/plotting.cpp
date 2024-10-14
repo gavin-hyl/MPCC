@@ -97,7 +97,6 @@ void Plotting::plotRun(const std::list<MPCReturn> &log, const TrackPos &track_xy
     plt::axis("equal");
     plt::xlabel("X [m]");
     plt::ylabel("Y [m]");
-    // ! SUBPLOT THROWS ERROR
     // plt::figure(2);
     // plt::subplot(3,2,1);
     // plt::plot(plot_x);
@@ -189,9 +188,10 @@ void Plotting::plotSim(const std::list<MPCReturn> &log, const TrackPos &track_xy
         plotBox(log_i.mpc_horizon[0].xk);
         plt::plot(plot_x,plot_y,"b-");
         plt::axis("equal");
-        // plt::xlim(-2,2);
-        // plt::ylim(-2,2);
-        plt::pause(0.01);
+        double window_size = 150;
+        plt::xlim(plot_x.at(0) - window_size, plot_x.at(0) + window_size);
+        plt::ylim(plot_y.at(0) - window_size, plot_y.at(0) + window_size);
+        plt::pause(0.001);
     }
 }
 

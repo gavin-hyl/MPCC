@@ -61,3 +61,13 @@ To run the code simply execute the `MPCC`
 ### TODO
 
 There are still several things that should be added to the project. Most of them are marked with TODO in the code.
+
+## Gavin's Notes
+Chaned parameters:
+- m, Iz, lf, lr
+- car_l, car_w
+- vxu, vyu  (in `bounds.json`, based on engine max RPM in online data)
+
+Track widths are found online, see comments in `generate_boundaries.py`
+
+To generate trajectories for different tracks, change the track file in `Params/config.json`. Switch between the two tracks labelled `full`.
